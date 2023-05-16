@@ -5,7 +5,7 @@ import getQuoteController from "../controllers/getQuoteController";
 
 const router = express.Router();
 
-router.get('/api/carvalue', carValueController);
+router.post('/api/carvalue', carValueController);
 router.post('/api/riskrating', riskRatingController);
 router.post('/api/quote', getQuoteController);
 
