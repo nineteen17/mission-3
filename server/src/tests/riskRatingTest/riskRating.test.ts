@@ -1,7 +1,5 @@
 import { evaluateRisk } from "../../services/calculateRiskRating";
-import { TestRiskRating } from "../../interfaces/Interface";
-
-// assuming the function is exported from 'calculateRiskRating.ts' file.
+import { TestRiskRating } from "../../types/types";
 
 const testCases: TestRiskRating[] = [
   {
@@ -33,4 +31,3 @@ describe("calculateRiskRating", () => {
     });
   });
 });
-
