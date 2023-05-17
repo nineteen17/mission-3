@@ -8,3 +8,17 @@ export interface CarValueOutput {
   error?: string;
 }
 
+export interface TestCarValue {
+  input: { model: string; year: number };
+  output: { car_value: number } | { error: string };
+}
+
+export type RiskInput= {
+  claim_history: string;
+}
+
+export type RiskOutput = {
+  risk_rating: number;
+} | {
+    error: string;
+}

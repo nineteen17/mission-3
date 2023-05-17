@@ -1,6 +1,6 @@
-import { Request, Response } from 'express';
-import { calculateCarValue } from '../functions/calculateCarValue';
-import { CarValueInput,  CarValueOutput} from '../interfaces/Interface';
+import { Request, Response } from "express";
+import { calculateCarValue } from "../services/calculateCarValue";
+import { CarValueInput, CarValueOutput } from "../interfaces/Interface";
 
 const carValueController = (req: Request, res: Response) => {
   // Retrieve model and year from request body or query parameters
@@ -18,7 +18,7 @@ const carValueController = (req: Request, res: Response) => {
   }
 
   // Send the car value as the response
-  return res.json({ car_value: result.car_value });
+  return res.json({ car_value: result.car_value }); // car_value is the key of the object and result.car_value is the value of the object
 };
 
 export default carValueController;

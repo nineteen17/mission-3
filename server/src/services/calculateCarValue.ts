@@ -1,6 +1,6 @@
 import { CarValueInput, CarValueOutput } from "../interfaces/Interface";
 
-export function calculateCarValue(input: CarValueInput): CarValueOutput {
+export function calculateCarValue(input: CarValueInput): CarValueOutput { // carValueOutput is the return type of the function
   const { model, year } = input;
 
   if (!model || !year) {

@@ -1,9 +1,15 @@
-// riskRatingController.ts
 import { Request, Response } from 'express';
+import { evaluateRisk } from '../services/calculateRiskRating';
+import { RiskInput } from '../interfaces/Interface';
 
 const riskRatingController = (req: Request, res: Response): void => { 
-    res.send('Hello from riskRatingController!');
-
+    const input: RiskInput = req.body;
+    try {
+        const output = evaluateRisk(input);
+        res.status(200).json(output);
+    } catch (error) {
+        res.status(400).json({ error: "There was an error processing your request" });
+    }
 };
 
 export default riskRatingController;
