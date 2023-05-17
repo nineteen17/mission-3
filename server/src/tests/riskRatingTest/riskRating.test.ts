@@ -1,53 +1,36 @@
-import { evaluateRisk } from '../../services/calculateRiskRating';
-import { RiskInput, RiskOutput } from '../../interfaces/Interface';
+import { evaluateRisk } from "../../services/calculateRiskRating";
+import { TestRiskRating } from "../../interfaces/Interface";
 
- // assuming the function is exported from 'calculateRiskRating.ts' file.
+// assuming the function is exported from 'calculateRiskRating.ts' file.
 
-describe('calculateRiskRating', () => {
-    it('should calculate the correct risk rating', () => {
-        const input: RiskInput = {
-            claim_history: "My only claim was a crash into my house's garage door that left a scratch on my car. There are no other crashes."
-        };
-        const output: RiskOutput = evaluateRisk(input);
-        expect(output).toEqual({ risk_rating: 3 });
+const testCases: TestRiskRating[] = [
+  {
+    input: {
+      claim_history:
+        "My only claim was a crash into my house's garage door that left a scratch on my car. There are no other crashes.",
+    },
+    output: { risk_rating: 3 },
+  },
+  {
+    input: { claim_history: "I've had no incidents in the past three years." },
+    output: { risk_rating: 1 },
+  },
+  {
+    input: { claim_history: "Crash, crash, crash." },
+    output: { risk_rating: 3 },
+  },
+  {
+    input: { claim_history: "" },
+    output: { error: "there is an error" },
+  },
+];
+
+describe("calculateRiskRating", () => {
+  testCases.map(({ input, output }) => {
+    it(`should calculate the risk rating correctly for ${input.claim_history}`, () => {
+      const result = evaluateRisk(input);
+      expect(result).toEqual(output);
     });
-
-    it('should return error when input is not valid', () => {
-        const input = {
-            claim_history: 123 // invalid input
-        };
-        const output = evaluateRisk(input as any); // using 'as any' to bypass TypeScript type check
-        expect(output).toEqual({ error: "there is an error" });
-    });
-
-
-  it('should handle no incidents correctly', () => {
-      const input: RiskInput = {
-          claim_history: "I've had no incidents in the past three years."
-      };
-      const output: RiskOutput = evaluateRisk(input);
-      expect(output).toEqual({ risk_rating: 1 }); // Minimum rating
-  });
-
-  it('should handle repeated keywords correctly', () => {
-      const input: RiskInput = {
-          claim_history: "Crash, crash, crash."
-      };
-      const output: RiskOutput = evaluateRisk(input);
-      expect(output).toEqual({ risk_rating: 3 });
-  });
-
-  it('should return error when input claim history is empty', () => {
-      const input: RiskInput = {
-          claim_history: "" // Empty string
-      };
-      const output: RiskOutput = evaluateRisk(input);
-      expect(output).toEqual({ error: "there is an error" });
-  });
-
-  it('should return error when input claim history is missing', () => {
-      const input = {}; // Missing claim_history
-      const output = evaluateRisk(input as any); // Using 'as any' to bypass TypeScript type check
-      expect(output).toEqual({ error: "there is an error" });
   });
 });
+

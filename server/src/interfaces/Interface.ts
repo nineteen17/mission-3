@@ -22,3 +22,8 @@ export type RiskOutput = {
 } | {
     error: string;
 }
+
+export interface TestRiskRating {
+  input: RiskInput;
+  output: RiskOutput;
+}
