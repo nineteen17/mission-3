@@ -29,3 +29,4 @@ export interface TestRiskRating {
   input: RiskInput;
   output: RiskOutput;
 }
+

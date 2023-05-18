@@ -25,7 +25,7 @@ const testCases: TestRiskRating[] = [
 
 describe("calculateRiskRating", () => {
   testCases.map(({ input, output }) => {
-    it(`should calculate the risk rating correctly for ${input.claim_history}`, () => {
+    it(`should calculate the risk rating correctly for the test: ${input.claim_history}`, () => {
       const result = evaluateRisk(input);
       expect(result).toEqual(output);
     });

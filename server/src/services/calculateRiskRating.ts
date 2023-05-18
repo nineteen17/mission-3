@@ -7,7 +7,7 @@ export function evaluateRisk(input: RiskInput): RiskOutput {
 
   // Validate input
   if (!input.claim_history || typeof input.claim_history !== "string") {
-    return { error: "there is an error" };
+    return { error: "there is an error in risk rating" };
   }
 
   // Calculate risk_rating
