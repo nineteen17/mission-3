@@ -8,9 +8,9 @@ describe('calculateQuote', () => {
 
     const result = calculateQuote(carValueInput, riskInput);
 
-    // Replace these with the expected values
-    const expectedCarValue = 5000; // replace with expected car value
-    const expectedRiskRating = 3; // replace with expected risk rating
+ 
+    const expectedCarValue = 5000; 
+    const expectedRiskRating = 3; 
     const expectedYearlyPremium = (expectedCarValue * expectedRiskRating) / 100;
     const expectedMonthlyPremium = expectedYearlyPremium / 12;
 
@@ -22,5 +22,4 @@ describe('calculateQuote', () => {
     });
   });
 
-  // Write more tests here for other cases, such as when input is not valid
 });

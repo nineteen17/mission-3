@@ -7,6 +7,7 @@ import { RiskInput, RiskOutput } from "../types/types";
 
 
 export let calculateQuote = (car_value: CarValueInput, risk_rating: RiskInput): CarValueOutput & RiskOutput & { yearlyPremium?: number, monthlyPremium?: number } => {
+    // Calculate car_value and risk_rating using services functions
     let carValueResult = calculateCarValue(car_value);
     let riskRatingResult = evaluateRisk(risk_rating);
          

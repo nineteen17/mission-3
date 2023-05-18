@@ -6,11 +6,11 @@
   "scripts": {
     "start": "nodemon --ext ts --watch src/**/*.ts --exec \"ts-node\" src/index.ts",
     "build": "tsc",
-    "test": "jest",    
+    "test": "jest",
     "test:1": "jest --runTestsByPath src/tests/carValueTest/carValue.test.ts",
-    "test:2": "jest --runTestsByPath src/tests/riskRatingTest/riskRating.test.ts"
-  }
-  ,
+    "test:2": "jest --runTestsByPath src/tests/riskRatingTest/riskRating.test.ts",
+    "test:3": "jest --runTestsByPath /src/tests/getQuoteTest/getQuoteTest.ts"
+  },
   "keywords": [],
   "author": "",
   "license": "ISC",

@@ -1,8 +1,8 @@
 import { RiskInput, RiskOutput } from "../types/types";
 
-export function evaluateRisk(input: RiskInput): RiskOutput {
+export const evaluateRisk = (input: RiskInput): RiskOutput => {
   // keywords to look for in claim_history
-  const keywords: string[] = ["collide", "crash", "scratch", "bump", "smash"];
+  const keywords: string[] = ["collide", "crash", "scratch", "bump", "smash", "accident","damaged",  "crashed"];
   let risk_rating = 0;
 
   // Validate input
@@ -10,9 +10,9 @@ export function evaluateRisk(input: RiskInput): RiskOutput {
     return { error: "there is an error in risk rating" };
   }
 
-  // Calculate risk_rating
+  // Calculate risk_rating by looking for keywords in claim_history using regex
   keywords.forEach((keyword) => {
-    let keywordMatches = input.claim_history.match(new RegExp(keyword, "gi"));
+    let keywordMatches = input.claim_history.match(new RegExp(keyword, "gi")); // case insensitive
     if (keywordMatches) {
       risk_rating += keywordMatches.length;
     }
