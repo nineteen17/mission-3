@@ -10,14 +10,14 @@ export let calculateQuote = (car_value: CarValueInput, risk_rating: RiskInput): 
     let carValueResult = calculateCarValue(car_value);
     let riskRatingResult = evaluateRisk(risk_rating);
          
-    // // Check for errors and return early if any
-    // if ('error' in carValueResult) {
-    //     return { ...carValueResult, ...riskRatingResult };
-    // }
+    // Check for errors and return early if any
+    if ('error' in carValueResult) {
+        return { ...carValueResult, ...riskRatingResult };
+    }
 
-    // if ('error' in riskRatingResult) {
-    //     return { ...carValueResult, ...riskRatingResult };
-    // }
+    if ('error' in riskRatingResult) {
+        return { ...carValueResult, ...riskRatingResult };
+    }
 
     // If we have valid car_value and risk_rating
     if ('car_value' in carValueResult && 'risk_rating' in riskRatingResult) {
@@ -32,7 +32,7 @@ export let calculateQuote = (car_value: CarValueInput, risk_rating: RiskInput): 
         };
     }
 
-    // If we're here, something unexpected happened
+    // If we have valid car_value but not risk_rating
     return {
         ...carValueResult,
         ...riskRatingResult,
