@@ -14,7 +14,7 @@ const testCases: TestRiskRating[] = [
     output: { risk_rating: 1 },
   },
   {
-    input: { claim_history: "crash, crashed, scratch, bump, smash, accident, damage, collide" }, // test the risk rating maxed out at 5
+    input: { claim_history: "crash, crashed, scratch, bump, smash, accident, damage, collide" }, // test the risk rating is maxed out at 5
     output: { risk_rating: 5 }, 
   },
   {
