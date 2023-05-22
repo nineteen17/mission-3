@@ -1,7 +1,6 @@
 # Docs for the Azure Web Apps Deploy action: https://github.com/Azure/webapps-deploy
 # More GitHub Actions for Azure: https://github.com/Azure/actions
 
-
 on:
   push:
     branches: [ "main" ]
@@ -32,13 +31,13 @@ jobs:
         npm install
         npm run build --if-present
         npm run test --if-present
-        working-directory: ./server
+      working-directory: ./server
 
     - name: Upload artifact for deployment job
       uses: actions/upload-artifact@v3
       with:
         name: node-app
-        path: .
+        path: ./server
 
   deploy:
     permissions:
@@ -54,6 +53,7 @@ jobs:
       uses: actions/download-artifact@v3
       with:
         name: node-app
+        path: ./server
 
     - name: 'Deploy to Azure WebApp'
       id: deploy-to-webapp
